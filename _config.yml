@@ -31,7 +31,8 @@ github_username:  SetsunaChyan
 theme: minimal-mistakes-jekyll
 plugins:
   - jekyll-feed
-
+  - jekyll-include-cache
+  
 # For Latex Formula
 markdown: kramdown
 
