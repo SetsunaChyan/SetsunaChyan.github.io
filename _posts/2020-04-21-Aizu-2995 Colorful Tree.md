@@ -1,4 +1,8 @@
-## Aizu-2995 Colorful Tree 树上启发式合并+并查集
+---
+​---
+categories: tutorial
+​---
+---
 
 [传送门](http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2995)
 
