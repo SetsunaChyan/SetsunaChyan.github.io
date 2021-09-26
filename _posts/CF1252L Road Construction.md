@@ -1,0 +1,159 @@
+## CF1252L Road Construction 网络流
+
+[传送门](http://codeforces.com/contest/1252/problem/L)
+
+$n$ 个点 $n$ 条边的无自环连通图，每条边有 $M_i$ 个属性($\sum m_i \leq 1e5$)，有 $k$ 个工人，每个工人对应一个属性。工人能修好他对应属性的那条边，但每个工人只能最多用一次，每条边也只能最多修一次，问能否有合理的分配使得 $n$ 个点互相可达，要求构造解。
+
+这个图一定是个树多一条边，那肯定只有一个环，我们称之为基环树。
+
+如果是树的话我们直接做二分图匹配就做完了，考虑如何处理这个环。
+
+环上有 $x$ 条边，我们只需要取任意 $x-1$ 边即可，可以新建一个工具点来限制它的选择，把所有环上的点连向拆出来的点，再把这个点连向汇点，容量为 $x-1$ 。非树边直接连汇点，容量为 $1$ 。
+
+同属性的工人之间是等价的，可以只用一个点代替，这样边数就是 $O(n+\sum m_i)$ 的了，每个点向源点连一条容量为这种属性工人出现次数的边。
+
+然后每种属性的工人向他能修的边连一条容量为 $1$ 的点，表示一条路只能修一次。
+
+然后整张图的最大流就表示最多能修几条路了。建出来差不多是下面这种样子的。
+
+![CF1252L_1](/home/kirisame/Desktop/Article/pic/CF1252L_1.png)
+
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+const int inf=0x3f3f3f3f;
+int n,k,s,t,tot,dis[5005],cur[5005],a[2005],deg[2005],vis[2005],mat[2005];
+struct edge
+{
+    int to,cap,rev;
+    edge(){}
+    edge(int to,int cap,int rev):to(to),cap(cap),rev(rev){}
+};
+vector<int> b[2005],e[2005];
+map<int,int> id,cnt;
+vector<edge> E[5005];
+
+inline void add_edge(int x,int y,int f)
+{
+    E[x].emplace_back(y,f,E[y].size());
+    E[y].emplace_back(x,0,E[x].size()-1);
+}
+
+int bfs()
+{
+    for(int i=1;i<=tot;i++) dis[i]=0x3f3f3f3f;
+    dis[s]=0;
+    queue<int> q;
+    q.push(s);
+    while(!q.empty())
+    {
+        int now=q.front();q.pop();
+        for(int i=0;i<E[now].size();i++)
+        {
+            edge &e=E[now][i];
+            if(dis[e.to]>dis[now]+1&&e.cap)
+            {
+                dis[e.to]=dis[now]+1;
+                if(e.to==t) return 1;
+                q.push(e.to);
+            }
+        }
+    }
+    return 0;
+}
+
+int dfs(int now,int flow)
+{
+    if(now==t) return flow;
+    int rest=flow,k;
+    for(int i=cur[now];i<E[now].size();i++)
+    {
+        edge &e=E[now][i];
+        if(e.cap&&dis[e.to]==dis[now]+1)
+        {
+            cur[now]=i;
+            k=dfs(e.to,min(rest,e.cap));
+            e.cap-=k;
+            E[e.to][e.rev].cap+=k;
+            rest-=k;
+        }
+    }
+    return flow-rest;
+}
+
+int dinic()
+{
+    int ret=0,delta;
+    while(bfs())
+    {
+        for(int i=1;i<=tot;i++) cur[i]=0;
+        while(delta=dfs(s,inf)) ret+=delta;
+    }
+    return ret;
+}
+
+int main()
+{
+    scanf("%d%d",&n,&k);
+    for(int i=1,m,x;i<=n;i++)
+    {
+        scanf("%d%d",a+i,&m);
+        deg[a[i]]++,deg[i]++;
+        e[i].push_back(a[i]),e[a[i]].push_back(i);
+        while(m--) scanf("%d",&x),b[i].push_back(x);
+    }
+    queue<int> q;
+    for(int i=1;i<=n;i++)
+        if(deg[i]==1) q.push(i),vis[i]=1;
+    while(!q.empty())
+    {
+        int now=q.front();q.pop();
+        for(auto to:e[now])
+            if(vis[to]==0)
+            {
+                deg[to]--;
+                if(deg[to]==1) q.push(to),vis[to]=1;
+            }
+    }
+    int Cnt=0;
+    for(int i=1;i<=n;i++) Cnt+=vis[i]^1;
+    add_edge(3,2,Cnt-1);
+    int lf=0;
+    for(int i=1;i<=k;i++)
+    {
+        scanf("%d",&mat[i]);
+        if(!id.count(mat[i])) id[mat[i]]=++lf;
+        cnt[mat[i]]++;
+    }
+    for(auto it:cnt)
+        add_edge(1,3+id[it.first],it.second);
+    for(int i=1;i<=n;i++)
+        if(!vis[i]&&!vis[a[i]])
+            add_edge(3+lf+i,3,1);
+        else
+            add_edge(3+lf+i,2,1);
+    for(int i=1;i<=n;i++)
+        for(auto num:b[i])
+            if(id.count(num))
+                add_edge(3+id[num],3+lf+i,1);
+    tot=3+n+lf,s=1,t=2;
+    if(dinic()==n-1)
+    {
+        for(int i=1;i<=k;i++)
+        {
+            int fd=0,fl=mat[i];
+            for(auto &to:E[3+id[mat[i]]])
+                if(to.to>3+lf&&to.cap==0)
+                {
+                    fd=1,to.cap++;
+                    printf("%d %d\n",to.to-3-lf,a[to.to-3-lf]);
+                    break;
+                }
+            if(!fd) printf("0 0\n");
+        }
+    }
+    else printf("-1");
+    return 0;
+}
+```

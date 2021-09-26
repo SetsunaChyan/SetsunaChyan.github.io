@@ -1,0 +1,65 @@
+## CF1254C Point Ordering 几何
+
+[传送门](http://codeforces.com/contest/1254/problem/C)
+
+交互题。
+
+有一个 $n$ 点的二维凸包，没有三点共线。
+
+现在你只知道 $n$ ，并且你每次操作可以得到三角形 $a_ia_ja_k$ 面积的两倍，或者 $\overrightarrow{a_ia_j}$ 和 $\overrightarrow{a_ia_k}$ 叉积的符号。
+
+你最多只能操作 $3\times n$ 次，输出一个以 $1$ 开头的排列 $p$ ，使得序列 $a_{p_i}$ 是凸包顶点的逆时针排列。
+
+首先可以花费 $n-2$ 次操作 $2$ ，知道以 $a_1$ 为顶点的一条边，不妨设它为 $a_1a_y$。
+
+如果 $k$ 逆时针地取，那么三角形 $a_1a_ya_k$ 的面积一定是先变大后变小的一个单峰函数。
+
+可以再花费 $n-2$ 次操作 $1$ ，得到所有以 $a_1a_y$ 为底的三角形的面积。
+
+假设 $a_1a_ya_x$ 是其中最大的，那么 $a_x$ 的两侧三角形的面积就是单调的了，可以用操作 $2$ 判断 $a_i$ 在 $a_x$ 的顺时针方向还是逆时针方向。
+
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+typedef pair<ll,int> pli;
+
+int y,z,n,sign;
+ll area;
+vector<pli> v;
+deque<int> q;
+
+int main()
+{
+    scanf("%d",&n);
+    y=2;
+    for(int i=3;i<=n;i++)
+    {
+        printf("2 1 %d %d\n",y,i);
+        fflush(stdout);
+        scanf("%d",&sign);
+        if(sign==-1) y=i;
+    }
+    for(int i=2;i<=n;i++)
+    {
+        if(i==y) continue;
+        printf("1 1 %d %d\n",y,i);
+        fflush(stdout);
+        scanf("%lld",&area);
+        v.emplace_back(area,i);
+    }
+    sort(v.rbegin(),v.rend());
+    q.push_back(z=v[0].second);
+    for(int i=1;i<v.size();i++)
+    {
+        printf("2 1 %d %d\n",z,v[i].second);
+        fflush(stdout);
+        scanf("%d",&sign);
+        if(sign==-1) q.push_back(v[i].second);
+        else q.push_front(v[i].second);
+    }
+    printf("0 1 %d ",y);
+    while(!q.empty()) printf("%d ",q.back()),q.pop_back();
+    return 0;
+}
+```

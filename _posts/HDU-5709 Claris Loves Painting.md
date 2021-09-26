@@ -1,0 +1,126 @@
+## HDU-5709 Claris Loves Painting  线段树合并
+
+$\text{claris nb!}$
+
+一棵树，每个点有颜色，多次询问某个子树中固定深度内的颜色种数。
+
+如果在序列上，那就是个大裸题，我们可以用同样的思想在树上搞他。
+
+我们对于每个节点都开两棵线段树，一棵建在深度上，维护这个子树在深度上有多少个不同的数的前缀和，另一颗用于维护每种颜色在子树内最后一次出现的位置在哪里(即最浅的深度)。 
+
+暴力把每棵线段树往父亲合并，合并第二棵时，如果走到了叶子节点，说明这个颜色在合并的树内都出现过，所以需要减掉一次，虽然这个减掉一次也是 $O(\log n)​$ 的，但数一共就 $n​$ 个，所以不会退化成两个 $\log​$ 。
+
+内存也是 $O(n*\log n)$ 的，常数比较大，反正给的空间够，往大的开就行了，反正写的很丑。
+
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+int lst,n,m,c[100005],d[100005],rt1[100005],rt2[100005],tot1,tot2;
+struct node
+{
+    int l,r,v;
+}seg1[10000005],seg2[10000005];
+vector<int> e[100005];
+
+int modify1(int rt,int l,int r,int x,int y)
+{
+    int p=++tot1;
+    seg1[p]=seg1[rt];
+    seg1[p].v+=y;
+    if(l==r) return p;
+    int m=l+r>>1;
+    if(x<=m) seg1[p].l=modify1(seg1[p].l,l,m,x,y);
+    else seg1[p].r=modify1(seg1[p].r,m+1,r,x,y);
+    return p;
+}
+
+int modify2(int rt,int l,int r,int x,int y)
+{
+    int p=++tot2;
+    seg2[p]=seg2[rt];
+    seg2[p].v=y;
+    if(l==r) return p;
+    int m=l+r>>1;
+    if(x<=m) seg2[p].l=modify2(seg2[p].l,l,m,x,y);
+    else seg2[p].r=modify2(seg2[p].r,m+1,r,x,y);
+    return p;
+}
+
+int query(int rt,int l,int r,int x)
+{
+    if(!rt) return 0;
+    if(r<=x) return seg1[rt].v;
+    int m=l+r>>1,ret=query(seg1[rt].l,l,m,x);
+    if(m<x) ret+=query(seg1[rt].r,m+1,r,x);
+    return ret;
+}
+
+int merge1(int p,int q)
+{
+    if(!p||!q) return p|q;
+    int rt=++tot1;
+    seg1[rt].v=seg1[p].v+seg1[q].v;
+    seg1[rt].l=merge1(seg1[p].l,seg1[q].l);
+    seg1[rt].r=merge1(seg1[p].r,seg1[q].r);
+    return rt;
+}
+
+int merge2(int now,int p,int q,int l,int r)
+{
+    if(!p||!q) return p|q;
+    int rt=++tot2,m=l+r>>1;
+    if(l==r)
+    {
+        rt1[now]=modify1(rt1[now],1,n,max(seg2[p].v,seg2[q].v),-1);
+        seg2[rt].v=min(seg2[p].v,seg2[q].v);
+    }
+    seg2[rt].l=merge2(now,seg2[p].l,seg2[q].l,l,m);
+    seg2[rt].r=merge2(now,seg2[p].r,seg2[q].r,m+1,r);
+    return rt;
+}
+
+void dfs(int now,int dep)
+{
+    d[now]=dep;
+    rt1[now]=modify1(rt1[now],1,n,dep,1);
+    rt2[now]=modify2(rt2[now],1,n,c[now],dep);
+    for(auto to:e[now])
+    {
+        dfs(to,dep+1);
+        rt1[now]=merge1(rt1[now],rt1[to]);
+        rt2[now]=merge2(now,rt2[now],rt2[to],1,n);
+    }
+}
+
+void solve()
+{
+    lst=tot1=tot2=0;
+    scanf("%d%d",&n,&m);
+    for(int i=1;i<=n;i++) scanf("%d",c+i),e[i].clear(),rt1[i]=rt2[i]=0;
+    for(int i=2,x;i<=n;i++)
+    {
+        scanf("%d",&x);
+        e[x].push_back(i);
+    }
+    dfs(1,1);
+    while(m--)
+    {
+        int x,dd;
+        scanf("%d%d",&x,&dd);
+        x^=lst,dd^=lst;
+        //assert(x>=1&&x<=n);
+        //assert(dd>=0&&dd<n);
+        lst=query(rt1[x],1,n,min(d[x]+dd,n));
+        printf("%d\n",lst);
+    }
+}
+
+int main()
+{
+    int _;
+    scanf("%d",&_);
+    while(_--) solve();
+    return 0;
+}
+```

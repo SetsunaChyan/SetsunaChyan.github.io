@@ -1,0 +1,107 @@
+## HDU-6562 Lovers 线段树
+
+一开始有 $n$ 个空串，有 $m$ 个操作，每次对区间中的每一个串的前后分别加上 $d$ ，即 $s_i \to d+s_i+d$ ，其中 $d$ 是一个数字字符，或者询问区间内所有串转化成数字后模意义下的和。
+
+维护这样一个懒标记 $(\text{pre},\text{suf},\text{bitlazy})$ ，其中 $\text{pre}$ 表示高位的新添加的数，$\text{suf}$ 表示低位的新添加的数，$\text{bitlazy}$ 表示 $\text{pre}$ 或 $\text{suf}$ 的位数，若位数是 $x$ ，则 $\text{bitlazy}$ 为 $10^{x+1}$ ，特殊地，如果为空则 $\text{bitlazy}=1$ 。
+
+线段树维护区间内的和以及位数的十次方和（就像懒标记中的那样)。
+
+然后就是比较繁琐的下推标记了，参考代码。
+
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+const int MAXN=1e5+50;
+const ll mod=1e9+7;
+ll seg[MAXN<<2],pre[MAXN<<2],suf[MAXN<<2],bit[MAXN<<2],bitlazy[MAXN<<2];
+int n,m;
+
+inline void pushup(int rt)
+{
+    seg[rt]=(seg[rt<<1]+seg[rt<<1|1])%mod;
+    bit[rt]=(bit[rt<<1]+bit[rt<<1|1])%mod;
+}
+
+inline void pushdown(int rt,ll ln,ll rn)
+{
+	int ls=rt<<1,rs=rt<<1|1;
+    seg[ls]=(bitlazy[rt]*seg[ls]%mod+ln*suf[rt]%mod+pre[rt]*bit[ls]%mod*bitlazy[rt]%mod)%mod;
+    seg[rs]=(bitlazy[rt]*seg[rs]%mod+rn*suf[rt]%mod+pre[rt]*bit[rs]%mod*bitlazy[rt]%mod)%mod;
+    suf[ls]=(suf[ls]*bitlazy[rt]%mod+suf[rt])%mod;
+    suf[rs]=(suf[rs]*bitlazy[rt]%mod+suf[rt])%mod;
+    pre[ls]=(pre[ls]+pre[rt]*bitlazy[ls]%mod)%mod;
+    pre[rs]=(pre[rs]+pre[rt]*bitlazy[rs]%mod)%mod;
+    bit[ls]=bit[ls]*bitlazy[rt]%mod*bitlazy[rt]%mod;
+    bit[rs]=bit[rs]*bitlazy[rt]%mod*bitlazy[rt]%mod;
+    bitlazy[ls]=bitlazy[ls]*bitlazy[rt]%mod;
+    bitlazy[rs]=bitlazy[rs]*bitlazy[rt]%mod;
+    bitlazy[rt]=1;
+    pre[rt]=suf[rt]=0;
+}
+
+void build(int rt,int l,int r)
+{
+    seg[rt]=pre[rt]=suf[rt]=0;
+    bit[rt]=bitlazy[rt]=1;
+	if(l==r) return;
+	int m=l+r>>1;
+	build(rt<<1,l,m);
+	build(rt<<1|1,m+1,r);
+	pushup(rt);
+}
+
+void modify(int rt,int l,int r,int L,int R,ll x)
+{
+	if(L<=l&&r<=R)
+	{
+	    ll len=r-l+1;
+		seg[rt]=(10*seg[rt]+len*x+x*bit[rt]%mod*10%mod)%mod;
+		pre[rt]=(pre[rt]+x*bitlazy[rt]%mod)%mod;
+		suf[rt]=(10*suf[rt]+x)%mod;
+	    bit[rt]=bit[rt]*100%mod;
+	    bitlazy[rt]=bitlazy[rt]*10%mod;
+		return;
+	}
+	int m=(l+r)>>1;
+	pushdown(rt,m-l+1,r-m);
+	if(L<=m) modify(rt<<1,l,m,L,R,x);
+	if(m<R) modify(rt<<1|1,m+1,r,L,R,x);
+	pushup(rt);
+}
+
+ll query(int rt,int l,int r,int L,int R)
+{
+	if(L<=l&&r<=R) return seg[rt];
+	ll ret=0;
+	int m=(l+r)>>1;
+	pushdown(rt,m-l+1,r-m);
+	if(L<=m) ret=(ret+query(rt<<1,l,m,L,R))%mod;
+	if(m<R) ret=(ret+query(rt<<1|1,m+1,r,L,R))%mod;
+	pushup(rt);
+	return ret;
+}
+
+void solve()
+{
+    scanf("%d%d",&n,&m);
+    build(1,1,n);
+    char op[10];int l,r,d;
+    while(m--)
+    {
+        scanf("%s%d%d",op,&l,&r);
+        if(op[0]=='w') scanf("%d",&d),modify(1,1,n,l,r,d);
+        else printf("%lld\n",query(1,1,n,l,r));
+    }
+}
+
+int main()
+{
+    int _;
+    scanf("%d",&_);
+    for(int i=1;i<=_;i++) printf("Case %d:\n",i),solve();
+    return 0;
+}
+```
+
