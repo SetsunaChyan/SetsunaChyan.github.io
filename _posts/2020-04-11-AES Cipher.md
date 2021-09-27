@@ -1,6 +1,10 @@
-## C++ 实现基于 AES 的 ECB 模式+ ZeroPadding 的加密与解密
+---
+title: "C++ 实现基于 AES  的加密与解密"
+categories: [Information Security]
+toc: true
+---
 
-[TOC]
+
 
 ~~终于我还是回到了 C++ 的怀抱~~
 
@@ -8,7 +12,7 @@ $\text{AES}$ 的加密模式有很多种，不过因为实验要求，这里就�
 
 对于明文不够一组长度的部分，用 $0\text{x}00$ 填充，所以也叫 $\text{ZeroPadding}$ 。
 
- 一个 $\text{word}​$ 长 $32​$ 位，一个 $\text{byte}​$ 长 $8​$ 位。
+ 一个 $\text{word}$ 长 $32$ 位，一个 $\text{byte}$ 长 $8$ 位。
 
 明文分组长度有 $3$ 种，$128/192/256 \text{ bit}$ ，令 $N_b$ 表示分组长度，单位为一个 $\text{word}$ ，那么就有 $N_b=4/6/8$ 。
 
@@ -16,16 +20,18 @@ $\text{AES}$ 的加密模式有很多种，不过因为实验要求，这里就�
 
 加密轮数同时和密钥长度以及明文长度有关，有 $N_r=\max(N_b,N_k)+6$ 。
 
-## 1. 密钥扩展
+### 1. 密钥扩展
 
 因为要加密算法要迭代 $N_r$ 轮，我们需要 $N_r+1$ 个长度为 $N_b$ 的密钥，于是就需要把 $N_k$ 长的密钥扩展成 $N_b(N_r+1)$ 长的密钥组。
 
 由一开始密钥中每一个 $\text{word}$ 构成初始密码数组，记为 $w_0,w_1,\dots,w_{N_k-1}$ 。
 
 然后开始扩展，当 $i$ 是 $N_k$ 的倍数时有
+
 $$
 w_i=  w_{i-1} \bigoplus w_{i-N_k}
 $$
+
 否则有要把 $w_{i-1}$ 按字循环左移，再进行 $S$ 盒变换，然后最高位的那个字异或上轮常量 $RC_j$ 。
 
 轮常量 $RC_j$ 是 $GF(2^8)$ 域上 $x^{i-1}$ 所表示的数值。
@@ -62,37 +68,38 @@ static vector<UINT> KeyExpansion(vector<UINT> &k,int Nb,int Nk,int Nr)
 
  
 
-## 2. 字节代换运算 SubBytes
+### 2. 字节代换运算 SubBytes
 
 这一步是可逆的非线性字节代换操作，把每个字节求 $GF(2^8)$ 上的乘法逆元，再进行一步仿射变换，有表达式
+
 $$
 \left[
 	\begin{matrix}
-		b_0'\\b_1'\\b_2'\\b_3'\\b_4'\\b_5'\\b_6'\\b_7'
+		b_0'\newline b_1'\newline b_2'\newline b_3'\newline b_4'\newline b_5'\newline b_6'\newline b_7'
 	\end{matrix} 
 \right]
 =
 \left[
 	\begin{matrix}
-		1&0&0&0&1&1&1&1\\
-		1&1&0&0&0&1&1&1\\
-		1&1&1&0&0&0&1&1\\
-		1&1&1&1&0&0&0&1\\
-		1&1&1&1&1&0&0&0\\
-		0&1&1&1&1&1&0&0\\
-		0&0&1&1&1&1&1&0\\
-		0&0&0&1&1&1&1&1\\
+		1&0&0&0&1&1&1&1\newline 
+		1&1&0&0&0&1&1&1\newline 
+		1&1&1&0&0&0&1&1\newline 
+		1&1&1&1&0&0&0&1\newline 
+		1&1&1&1&1&0&0&0\newline 
+		0&1&1&1&1&1&0&0\newline 
+		0&0&1&1&1&1&1&0\newline 
+		0&0&0&1&1&1&1&1\newline 
 	\end{matrix} 
 \right]
 \left[
 	\begin{matrix}
-		b_0\\b_1\\b_2\\b_3\\b_4\\b_5\\b_6\\b_7
+		b_0\newline b_1\newline b_2\newline b_3\newline b_4\newline b_5\newline b_6\newline b_7
 	\end{matrix} 
 \right]
 +
 \left[
 	\begin{matrix}
-		1\\1\\0\\0\\0\\1\\1\\0
+		1\newline 1\newline 0\newline 0\newline 0\newline 1\newline 1\newline 0
 	\end{matrix} 
 \right]
 $$
@@ -156,7 +163,7 @@ static void SubBytes(vector<UINT> state[4],int op)
 
 
 
-## 3. 行移位变换 ShiftRows
+### 3. 行移位变换 ShiftRows
 
 这个操作是同组中 $\text{word}$ 间的混淆。第 $i$ 行循环左移 $C_i$ ，有 $C_i=i-1$ 。
 
@@ -178,27 +185,27 @@ static void ShiftRows(vector<UINT> state[4],int Nb,int Nk,int op)
 
 
 
-## 4. 列混合变换 MixColumns
+### 4. 列混合变换 MixColumns
 
 列混合是对每个 $\text{word}$ (也就是列)的线性变换，对于 $w_i=\{s_{0i}',s_{1i}',s_{2i}',s_{3i}'\}$有
 $$
 \left[
 	\begin{matrix}
-		s_{0i}'\\s_{1i}'\\s_{2i}'\\s_{3i}'
+		s_{0i}'\newline s_{1i}'\newline s_{2i}'\newline s_{3i}'
 	\end{matrix} 
 \right]
 =
 \left[
 	\begin{matrix}
-		02&03&01&01\\
-		01&02&03&01\\
-		01&01&02&03\\
-		03&01&01&02\\
+		02&03&01&01\newline 
+		01&02&03&01\newline 
+		01&01&02&03\newline 
+		03&01&01&02\newline 
 	\end{matrix} 
 \right]
 \left[
 	\begin{matrix}
-		s_{0i}\\s_{1i}\\s_{2i}\\s_{3i}
+		s_{0i}\newline s_{1i}\newline s_{2i}\newline s_{3i}
 	\end{matrix} 
 \right]
 $$
@@ -206,21 +213,21 @@ $$
 $$
 \left[
 	\begin{matrix}
-		s_{0i}'\\s_{1i}'\\s_{2i}'\\s_{3i}'
+		s_{0i}'\newline s_{1i}'\newline s_{2i}'\newline s_{3i}'
 	\end{matrix} 
 \right]
 =
 \left[
 	\begin{matrix}
-		0e&0b&0d&09\\
-		09&0e&0b&0d\\
-		0d&09&0e&0b\\
-		0b&0d&09&0e\\
+		0e&0b&0d&09\newline 
+		09&0e&0b&0d\newline 
+		0d&09&0e&0b\newline 
+		0b&0d&09&0e\newline 
 	\end{matrix} 
 \right]
 \left[
 	\begin{matrix}
-		s_{0i}\\s_{1i}\\s_{2i}\\s_{3i}
+		s_{0i}\newline s_{1i}\newline s_{2i}\newline s_{3i}
 	\end{matrix} 
 \right]
 $$
@@ -241,8 +248,8 @@ static UINT mul(UINT x,UINT y)
 }
 static void MixColumns(vector<UINT> state[4],int op)
 {
-    static const UINT pos[4][4]={{0x2,0x3,0x1,0x1},{0x1,0x2,0x3,0x1},{0x1,0x1,0x2,0x3},{0x3,0x1,0x1,0x2}};
-    static const UINT inv[4][4]={{0x0e,0x0b,0x0d,0x09},{0x09,0x0e,0x0b,0x0d},{0x0d,0x09,0x0e,0x0b},{0x0b,0x0d,0x09,0x0e}};
+    static const UINT pos[4][4]={ {0x2,0x3,0x1,0x1},{0x1,0x2,0x3,0x1},{0x1,0x1,0x2,0x3},{0x3,0x1,0x1,0x2} };
+    static const UINT inv[4][4]={ {0x0e,0x0b,0x0d,0x09},{0x09,0x0e,0x0b,0x0d},{0x0d,0x09,0x0e,0x0b},{0x0b,0x0d,0x09,0x0e} };
     int tmp[4];
     for(int col=0;col<(int)state[0].size();col++)
     {
@@ -258,7 +265,7 @@ static void MixColumns(vector<UINT> state[4],int op)
 
 
 
-## 4. 轮密钥加变换 AddRoundKey
+### 5. 轮密钥加变换 AddRoundKey
 
 其实就是把生成的对应轮次的密钥直接加到状态上。
 
@@ -278,7 +285,7 @@ static void AddRoundKey(vector<UINT> state[4],vector<UINT> &kw,int st,int Nb)
 
 
 
-## 5. 加密与解密过程
+### 6. 加密与解密过程
 
 由于解密其实就是把加密倒过来做一遍，代码几乎是可以完全重用的。
 

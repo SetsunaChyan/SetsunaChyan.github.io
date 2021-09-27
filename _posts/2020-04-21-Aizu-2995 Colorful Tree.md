@@ -1,5 +1,6 @@
 ---
-categories: tutorial
+categories: Tutorial
+tags: [DSU On Tree]
 ---
 
 [传送门](http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2995)
