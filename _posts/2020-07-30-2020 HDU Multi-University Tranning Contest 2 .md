@@ -1,6 +1,11 @@
-# 2020 HDU Multi-University Training Contest 2
-
-[toc]
+---
+title: "2020 HDU Multi-University Training Contest 2"
+categories: [Tutorial]
+tags: [Union Set,Flows,DP]
+toc: true
+classes: []
+excerpt: "2020杭电多校第二场"
+---
 
 
 

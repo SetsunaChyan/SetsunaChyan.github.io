@@ -1,6 +1,8 @@
 ---
+title: "Aizu-2996 Colorful Tree 启发式合并"
 categories: Tutorial
 tags: [DSU On Tree]
+excerpt: "几乎是树上启发式合并模板题"
 ---
 
 [传送门](http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2995)

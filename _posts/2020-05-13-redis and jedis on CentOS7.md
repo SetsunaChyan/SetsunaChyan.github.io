@@ -1,6 +1,10 @@
-## CentOS7 服务器上 redis 的配置与 jedis 客户端
-
-[toc]
+---
+title: "CentOS7 上配置 redis 与 jedis 客户端"
+categories: [Redis]
+toc: true
+classes: []
+excerpt: "简单配置 redis 与使用 jedis"
+---
 
 ### 服务端
 

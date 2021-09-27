@@ -1,6 +1,8 @@
 ---
+title: "AtCoder-abc159-F Knapsack for All Segments DP"
 categories: [Tutorial]
 tags: [DP]
+excerpt: "简单的DP，很灵性的dp[0]++"
 ---
 
 

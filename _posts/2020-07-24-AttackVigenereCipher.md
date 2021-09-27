@@ -2,6 +2,8 @@
 title: "统计分析方法攻击维吉尼亚密码"
 categories: [Information Security]
 toc: true
+classes: []
+excerpt: "信息安全实验记录，效果不错"
 ---
 
 

@@ -290,6 +290,7 @@ defaults:
       type: posts
     values:
       layout: single
+      classes: wide # 如果需要toc 手动覆盖即可
       author_profile: true
       comments: # true
       show_date: true

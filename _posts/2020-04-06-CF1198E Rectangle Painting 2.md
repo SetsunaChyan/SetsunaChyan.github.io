@@ -1,4 +1,11 @@
-## CF1198E Rectangle Painting 2 网络流
+---
+title: "CF1198E Rectangle Painting 2 网络流"
+categories: [Tutorial]
+tags: [Flows]
+excerpt: "从棋盘覆盖变形的一道最大流"
+---
+
+
 
 [传送门](https://codeforces.com/problemset/problem/1198/E)
 

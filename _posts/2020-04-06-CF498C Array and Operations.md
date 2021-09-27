@@ -1,4 +1,11 @@
-## CF498C Array and Operations 网络流/二分图最大匹配
+---
+title: "CF498C Array and Operations 网络流/二分图最大匹配"
+categories: [Tutorial]
+tags: [Flows]
+excerpt: "套了个数论外壳的最大流"
+---
+
+
 
 [传送门](https://codeforces.com/problemset/problem/498/C)
 
@@ -24,13 +31,13 @@ $n$ 个数字 $a[1],\dots,a[n]$ ，$m$ 对关系 $(i_1,j_1),\dots,(i_m,j_m)$ ，
 
 这个图的最大流就是答案。
 
-![CF498C_1](/home/kirisame/Desktop/Article/pic/CF498C_1.png)
+![CF498C_1](/assets/images/posts/CF498C_1.png)
 
-时间复杂度 $O(n\sqrt a+m+\text{max-flow}(|V|=18*n,|E|=18*n+9*m))$ ，正常的流都能过。
+时间复杂度 $O(n\sqrt a+m+\text{max-flow}(\lvert V\rvert=18n,\lvert E\rvert=18n+9m))$ ，正常的流都能过。
 
 样例 $2$ 的建图如下。
 
-![CF498C_2](/home/kirisame/Desktop/Article/pic/CF498C_2.png)
+![CF498C_2](/assets/images/posts/CF498C_2.png)
 
 ```cpp
 #include <bits/stdc++.h>

@@ -1,7 +1,9 @@
 ---
-title: "C++ 实现基于 AES  的加密与解密"
+title: "C++ 实现基于 AES 的加密与解密"
 categories: [Information Security]
 toc: true
+classes: []
+excerpt: "信息安全实验记录，ECB模式+ZeroPadding"
 ---
 
 
