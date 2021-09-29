@@ -1,6 +1,13 @@
-# 2020 HDU Multi-University Training Contest 1
+---
+title: "2020 HDU Multi-University Training Contest 1"
+categories: [Tutorial]
+tags: [Number Theory,SQRT Alogorithm,Convex,Lyndon Decomposition,Half-plane Intersection]
+toc: true
+classes: []
+excerpt: "2020杭电多校第一场"
+---
 
-[toc]
+
 
 |      | A    | B    | C    | D         | E         | F         | G    | H    | I         | J    | K         | L         |
 | ---- | ---- | ---- | ---- | --------- | --------- | --------- | ---- | ---- | --------- | ---- | --------- | --------- |
