@@ -1,0 +1,37 @@
+---
+title: "程序分析相关资源"
+categories: [Program Analysis]
+toc: true
+classes: []
+excerpt: "一些程序分析、编译原理的课程和文献"
+---
+
+### 课程
+
++ [南京大学 静态程序分析 2020春 (李樾,谭添)](https://www.bilibili.com/video/av91858985) [课程]()
+
+  + [南大配套教程](https://github.com/RangerNJU/Static-Program-Analysis-Book) 南大课程前八节有录播，后面可以使用该教程，教程配套 Lab。
+
++ [北京大学 软件分析技术 2020秋 (熊英飞)](https://liveclass.org.cn/cloudCourse/#/courseDetail/8mI06L2eRqk8GcsW) [课程(2019)](https://xiongyingfei.github.io/SA/2019/main.htm)
+
++ [Static Program Analysis - Anders Møller - PLISS 2019](https://www.bilibili.com/video/BV17K4y1t727) [课程](https://cs.au.dk/~amoeller/spa/)
+  + [配套讲义](https://lara.epfl.ch/w/_media/sav08:schwartzbach.pdf)  
+  
+  + [上述课程的详细版本讲义](https://lara.epfl.ch/w/_media/sav08:schwartzbach.pdf)
+  
++ [方舟·编译技术入门与实战(编译原理+开源项目)](https://www.bilibili.com/video/BV1TJ411v7ys/)
+
+
+
+### 文献
+
+#### Static Taint Analysis
+
++ Flowdroid Precise context, flow, field, object-sensitive and lifecycle-aware taint analysis for android apps (2014 SIGPLAN)
+
+  主要贡献是基于 IFDS，同时做到了 context-sensitive 和 flow-sensitive 且保持了一个较高的效率。
+
++ JNI-aware Inter-language Static Analysis Framework for Security Vetting of Android Applications with Native Code (2018 CCS)
+
+  分析 Native Code。
+
