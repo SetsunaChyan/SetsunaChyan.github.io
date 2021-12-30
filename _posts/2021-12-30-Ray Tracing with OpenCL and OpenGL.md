@@ -213,8 +213,8 @@ $$
     <img style="border-radius: 0.3125em;
     box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
     src="assets/images/posts/RayTracingLab/rtlab1.png" width = "30%" alt=""/>
-    <br>
 </center>
+
 
 #### 折射
 
@@ -227,8 +227,8 @@ $$
     <img style="border-radius: 0.3125em;
     box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
     src="assets/images/posts/RayTracingLab/rtlab2.png" width = "30%" alt=""/>
-    <br>
 </center>
+
 
 特殊地，如果 $\frac{n_1}{n_2}\sin(\theta_i) \gt 1$ 则说明不会发生折射。 
 
@@ -264,7 +264,6 @@ $$
     <img style="border-radius: 0.3125em;
     box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
     src="assets/images/posts/RayTracingLab/rtlab3.png" width = "70%" alt=""/>
-    <br>
 </center>
 
 
