@@ -209,7 +209,12 @@ $$
 
 为了保证随机满足这样的一个分布，可以在法向量上往外一单位距离为球心画一个单位球，然后用蒙特卡洛在单位球内随机一个点，与交点连接，这样得到的随机向量就是满足分布的，证明略。
 
-<img src="/assets/images/posts/RayTracingLab/rtlab1.png" alt="rtlab1" style="zoom:61%;" />
+<center>
+    <img style="border-radius: 0.3125em;
+    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
+    src="assets/images/posts/RayTracingLab/rtlab1.png" width = "30%" alt=""/>
+    <br>
+</center>
 
 #### 折射
 
@@ -218,7 +223,12 @@ $$
 n_1 \sin(\theta_i)=n_2 \sin(\theta_t)
 $$
 
-<img src="/assets/images/posts/RayTracingLab/rtlab2.png" alt="rtlab2" style="zoom:61%;" />
+<center>
+    <img style="border-radius: 0.3125em;
+    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
+    src="assets/images/posts/RayTracingLab/rtlab2.png" width = "30%" alt=""/>
+    <br>
+</center>
 
 特殊地，如果 $\frac{n_1}{n_2}\sin(\theta_i) \gt 1$ 则说明不会发生折射。 
 
@@ -250,7 +260,13 @@ $$
 
 由于本项目中光线反射的方法是基于概率和采样，所以一定会有噪点。下图展示了程序的运行结果，分别是运行了一分钟、五分钟和一小时的效果，可以看出随着时间的增加，图片中的噪点明显地变少了，效果看起来也更加的真实。
 
-<img src="/assets/images/posts/RayTracingLab/rtlab3.png" alt="rtlab3"  />
+<center>
+    <img style="border-radius: 0.3125em;
+    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
+    src="assets/images/posts/RayTracingLab/rtlab3.png" width = "70%" alt=""/>
+    <br>
+</center>
+
 
 运行在Intel集成显卡上，大概能达到的效率为 $1.5$ 帧每秒左右，每帧的运算量大约在像素点数量乘以光追的深度也就是 $800\times800\times10$ 左右。
 
