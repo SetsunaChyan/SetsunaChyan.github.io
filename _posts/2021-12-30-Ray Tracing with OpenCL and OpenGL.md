@@ -212,7 +212,7 @@ $$
 <center>
     <img style="border-radius: 0.3125em;
     box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
-    src="assets/images/posts/RayTracingLab/rtlab1.png" width = "30%" alt=""/>
+    src="/assets/images/posts/RayTracingLab/rtlab1.png" width = "100%" alt=""/>
 </center>
 
 
@@ -226,7 +226,7 @@ $$
 <center>
     <img style="border-radius: 0.3125em;
     box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
-    src="assets/images/posts/RayTracingLab/rtlab2.png" width = "30%" alt=""/>
+    src="/assets/images/posts/RayTracingLab/rtlab2.png" width = "100%" alt=""/>
 </center>
 
 
@@ -263,7 +263,7 @@ $$
 <center>
     <img style="border-radius: 0.3125em;
     box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
-    src="/assets/images/posts/RayTracingLab/rtlab3.png" width = "70%" alt=""/>    
+    src="/assets/images/posts/RayTracingLab/rtlab3.png" width = "100%" alt=""/>    
 </center>
 
 
