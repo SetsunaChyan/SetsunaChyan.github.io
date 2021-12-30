@@ -268,12 +268,12 @@ $$
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
     display: inline-block;
     color: #999;
-    padding: 2px;">
+    padding: 2px;">运行结果
   	</div>
 </center>
 
 
-运行在Intel集成显卡上，大概能达到的效率为 $1.5$ 帧每秒左右，每帧的运算量大约在像素点数量乘以光追的深度也就是 $800\times800\times10$ 左右。
+运行在 Intel 集成显卡上，大概能达到的效率为 $1.5$ 帧每秒左右，每帧的运算量大约在像素点数量乘以光追的深度也就是 $800\times800\times10$ 左右。
 
 
 
