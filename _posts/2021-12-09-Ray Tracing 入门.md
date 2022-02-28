@@ -29,7 +29,7 @@ In 3D computer graphics, ray tracing is a technique for modeling light transport
 <center>
     <img style="border-radius: 0.3125em;
     box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
-    src="pic/ray_tracing_intro_2.png" width="600" height="300"> 
+    src="/assets/images/posts/RayTracing/ray_tracing_intro_2.png" width="600" height="300"> 
     <br>
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
     display: inline-block;
@@ -38,18 +38,20 @@ In 3D computer graphics, ray tracing is a technique for modeling light transport
 </center>
 
 
+
 我们的目标是简要地介绍光线追踪的技术，从一张最简单的图开始，一步一步添加细节，完成一张光线追踪风格的渲染。
 
 <center>
     <img style="border-radius: 0.3125em;
     box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
-    src="pic/ray_tracing_intro_3.png" width="600" height="430">
+    src="/assets/images/posts/RayTracing/ray_tracing_intro_3.png" width="600" height="430">
     <br>
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
     display: inline-block;
     color: #999;
     padding: 2px;">效果展示</div>
 </center>
+
 
 
 
@@ -60,7 +62,7 @@ In 3D computer graphics, ray tracing is a technique for modeling light transport
 <center>
     <img style="border-radius: 0.3125em;
     box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
-    src="pic/ray_tracing_intro_4.png" width="600" height="300">
+    src="/assets/images/posts/RayTracing/ray_tracing_intro_4.png" width="600" height="300">
     <br>
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
     display: inline-block;
@@ -73,7 +75,7 @@ In 3D computer graphics, ray tracing is a technique for modeling light transport
 <center>
     <img style="border-radius: 0.3125em;
     box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
-    src="pic/ray_tracing_intro_5.png" width="600" height="300">
+    src="/assets/images/posts/RayTracing/ray_tracing_intro_5.png" width="600" height="300">
     <br>
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
     display: inline-block;
@@ -95,7 +97,7 @@ In 3D computer graphics, ray tracing is a technique for modeling light transport
 <center>
     <img style="border-radius: 0.3125em;
     box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
-    src="pic/ray_tracing_intro_6.png" width="600" height="300">
+    src="/assets/images/posts/RayTracing/ray_tracing_intro_6.png" width="600" height="300">
     <br>
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
     display: inline-block;
@@ -116,7 +118,7 @@ In 3D computer graphics, ray tracing is a technique for modeling light transport
 <center>
     <img style="border-radius: 0.3125em;
     box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
-    src="pic/ray_tracing_intro_7.png" width="600" height="300">
+    src="/assets/images/posts/RayTracing/ray_tracing_intro_7.png" width="600" height="300">
     <br>
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
     display: inline-block;
@@ -130,7 +132,7 @@ In 3D computer graphics, ray tracing is a technique for modeling light transport
 <center>
     <img style="border-radius: 0.3125em;
     box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
-    src="pic/ray_tracing_intro_color_only.png"
+    src="/assets/images/posts/RayTracing/ray_tracing_intro_color_only.png"
     width="300" height="300">
     <br>
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
@@ -151,7 +153,7 @@ In 3D computer graphics, ray tracing is a technique for modeling light transport
 <center>
     <img style="border-radius: 0.3125em;
     box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
-    src="pic/ray_tracing_intro_8.png"
+    src="/assets/images/posts/RayTracing/ray_tracing_intro_8.png"
     width="400" height="300">
     <br>
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
@@ -170,7 +172,7 @@ $$
 <center>
     <img style="border-radius: 0.3125em;
     box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
-    src="pic/ray_tracing_intro_9.png"
+    src="/assets/images/posts/RayTracing/ray_tracing_intro_9.png"
     width="600" height="250">
     <br>
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
@@ -186,7 +188,7 @@ $$
 <center>
     <img style="border-radius: 0.3125em;
     box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
-    src="pic/ray_tracing_intro_lambertian.png"
+    src="/assets/images/posts/RayTracing/ray_tracing_intro_lambertian.png"
     width="300" height="300">
     <br>
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
@@ -210,7 +212,7 @@ $$
 <center>
     <img style="border-radius: 0.3125em;
     box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
-    src="pic/ray_tracing_intro_10.png"
+    src="/assets/images/posts/RayTracing/ray_tracing_intro_10.png"
     width="600" height="300">
     <br>
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
@@ -224,7 +226,7 @@ $$
 <center>
     <img style="border-radius: 0.3125em;
     box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
-    src="pic/ray_tracing_intro_11.png"
+    src="/assets/images/posts/RayTracing/ray_tracing_intro_11.png"
     width="600" height="150">
     <br>
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
@@ -238,7 +240,7 @@ $$
 <center>
     <img style="border-radius: 0.3125em;
     box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
-    src="pic/ray_tracing_intro_bp.png"
+    src="/assets/images/posts/RayTracing/ray_tracing_intro_bp.png"
     width="300" height="300">
     <br>
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
@@ -257,7 +259,7 @@ $$
 <center>
     <img style="border-radius: 0.3125em;
     box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
-    src="pic/ray_tracing_intro_12.png"
+    src="/assets/images/posts/RayTracing/ray_tracing_intro_12.png"
     width="600" height="300">
     <br>
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
@@ -271,7 +273,7 @@ $$
 <center>
     <img style="border-radius: 0.3125em;
     box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
-    src="pic/ray_tracing_intro_bp_shadow.png"
+    src="/assets/images/posts/RayTracing/ray_tracing_intro_bp_shadow.png"
     width="300" height="300">
     <br>
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
@@ -297,7 +299,7 @@ $$
 <center>
     <img style="border-radius: 0.3125em;
     box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
-    src="pic/ray_tracing_intro_13.png"
+    src="/assets/images/posts/RayTracing/ray_tracing_intro_13.png"
     width="600" height="300">
     <br>
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
@@ -311,7 +313,7 @@ $$
 <center>
     <img style="border-radius: 0.3125em;
     box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
-    src="pic/ray_tracing_intro_14.png"
+    src="/assets/images/posts/RayTracing/ray_tracing_intro_14.png"
     width="600" height="300">
     <br>
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
@@ -325,7 +327,7 @@ $$
 <center>
     <img style="border-radius: 0.3125em;
     box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
-    src="pic/ray_tracing_intro_whitted.png"
+    src="/assets/images/posts/RayTracing/ray_tracing_intro_whitted.png"
     width="300" height="300">
     <br>
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
@@ -347,7 +349,7 @@ $$
 <center>
     <img style="border-radius: 0.3125em;
     box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
-    src="pic/ray_tracing_intro_15.png"
+    src="/assets/images/posts/RayTracing/ray_tracing_intro_15.png"
     width="620" height="200">
     <br>
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
@@ -361,7 +363,7 @@ $$
 <center>
     <img style="border-radius: 0.3125em;
     box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
-    src="pic/ray_tracing_intro_path.png"
+    src="/assets/images/posts/RayTracing/ray_tracing_intro_path.png"
     width="300" height="300">
     <br>
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
