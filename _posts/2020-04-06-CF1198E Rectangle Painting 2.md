@@ -5,8 +5,6 @@ tags: [Flows]
 excerpt: "从棋盘覆盖变形的一道最大流"
 ---
 
-
-
 [传送门](https://codeforces.com/problemset/problem/1198/E)
 
 问题是网格图中有若干个黑点，每次可以选择一个 $w\times h$ 的矩阵消除黑点($w,h$ 任意)，代价是 $\min(w,h)$ ，问消除所有黑点的最小代价。
