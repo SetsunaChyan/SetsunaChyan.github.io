@@ -1,6 +1,11 @@
-# 2020 HDU Multi-University Training Contest 3
-
-[toc]
+---
+title: "2020 HDU Multi-University Training Contest 3"
+categories: [Tutorial]
+tags: [Geometry,Greedy,Union Set]
+toc: true
+classes: []
+excerpt: "2020杭电多校第三场"
+---
 
 
 
@@ -8,50 +13,10 @@ Rank 101，前期大胜利，一度进过前 $15$ ，中后期雪崩...
 
 
 
-<table boder="2">
-<tr align="center">
-<td> </td>
-<td>A</td>
-<td>B</td>
-<td>C</td>
-<td>D</td>
-<td>E</td>
-<td>F</td>
-<td>G</td>
-<td>H</td>
-<td>I</td>
-<td>J</td>
-<td>K</td>
-</tr>
-<tr align="center">
-<td>赛时</td>
-<td> </td>
-<td> </td>
-<td> </td>
-<td>🎈</td>
-<td>🎈</td>
-<td>💭</td>
-<td>💡</td>
-<td>🎈</td>
-<td>🎈</td>
-<td>💭</td>
-<td> </td>
-</tr>
-<tr align="center">
-<td>赛后</td>
-<td> </td>
-<td> </td>
-<td> </td>
-<td> </td>
-<td> </td>
-<td> </td>
-<td> </td>
-<td> </td>
-<td> </td>
-<td> </td>
-<td> </td>
-</tr>
-</table>
+|      | A    | B    | C    | D         | E         | F       | G      | H         | I         | J       | K    |
+| ---- | ---- | ---- | ---- | --------- | --------- | ------- | ------ | --------- | --------- | ------- | ---- |
+| 赛时 |      |      |      | :balloon: | :balloon: | :cloud: | :bulb: | :balloon: | :balloon: | :cloud: |      |
+| 赛后 |      |      |      |           |           |         |        |           |           |         |      |
 
 
 
