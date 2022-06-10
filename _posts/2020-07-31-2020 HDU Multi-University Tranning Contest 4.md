@@ -1,56 +1,24 @@
-# 2020 HDU Multi-University Training Contest 4
+---
+title: "2020 HDU Multi-University Training Contest 4"
+categories: [Tutorial]
+tags: [DP]
+toc: true
+classes: []
+excerpt: "2020杭电多校第四场"
+---
 
-[toc]
+
 
 Rank 55，这场签到题比较多，运气也比较好。
 
-<table boder="2">
-<tr align="center">
-<td> </td>
-<td>A</td>
-<td>B</td>
-<td>C</td>
-<td>D</td>
-<td>E</td>
-<td>F</td>
-<td>G</td>
-<td>H</td>
-<td>I</td>
-<td>J</td>
-<td>K</td>
-<td>L</td>
-</tr>
-<tr align="center">
-<td>赛时</td>
-<td> </td>
-<td>🎈</td>
-<td>🎈</td>
-<td>🎈</td>
-<td>🎈</td>
-<td>👀</td>
-<td>🎈</td>
-<td>👀</td>
-<td>👀</td>
-<td> </td>
-<td>🎈</td>
-<td>🎈</td>
-</tr>
-<tr align="center">
-<td>赛后</td>
-<td> </td>
-<td> </td>
-<td> </td>
-<td> </td>
-<td> </td>
-<td> </td>
-<td> </td>
-<td> </td>
-<td> </td>
-<td> </td>
-<td> </td>
-<td> </td>
-</tr>
-</table>
+
+
+
+|      | A    | B    | C         | D         | E         | F       | G      | H     | I         | J         | K       | L    |
+| ---- | ---- | ---- | --------- | --------- | --------- | ------- | ------ | --------- | --------- | ------- | ---- | ---- |
+| 赛时 |      |  :balloon:   | :balloon: | :balloon: | :balloon: | :eyes: | :balloon: | :eyes: | :eyes: |  | :balloon: | :balloon: |
+| 赛后 |      |      |           |           |           |         |        |        |           |           |         |      |
+
 
 
 ### B. Blow up the Enemy 
@@ -126,3 +94,6 @@ int main()
 }
 ```
 
+
+
+剩下的咕咕咕了，准备保研中。
