@@ -41,7 +41,7 @@ Rank 55，这场签到题比较多，运气也比较好。
 
 设有 $2n$ 个整数 $a_1,a_2,\cdots,a_n$ ，满足 $\sum_{i=1}^n a_i=0 , \vert a_i\vert \leq V$ 。将数列 $\{a_i\}$ 等概率随机排列得到 $\{b_i\}$ 。
 
-计算 $A=\max\{\sum_{i=1}^k b_i|k \in \{1,2,\cdots,2n\}\}$ 期望的上界。
+计算 $A=\max\{\sum_{i=1}^k b_i\vert k \in \{1,2,\cdots,2n\}\}$ 期望的上界。
 
 
 
