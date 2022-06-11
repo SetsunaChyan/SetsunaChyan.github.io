@@ -1,4 +1,9 @@
-## Airport Logistics 几何+最短路
+---
+title: "Airport Logistics 几何+最短路"
+categories: [Tutorial]
+tags: [Geometry,Shortest Path]
+excerpt: "经典计算几何寻路题"
+---
 
 [传送门](<https://open.kattis.com/problems/airportlogistics>)
 

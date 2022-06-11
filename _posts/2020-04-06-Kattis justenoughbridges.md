@@ -1,4 +1,9 @@
-## Just Enough Bridges 二分图最大匹配+强连通分量
+---
+title: "Just Enough Bridges 二分图最大匹配+强连通分量"
+categories: [Tutorial]
+tags: [Tarjan,Flows]
+excerpt: "求多少条边是完美匹配的必选边"
+---
 
 [传送门](https://open.kattis.com/problems/justenoughbridges)
 
