@@ -1,5 +1,3 @@
-Hidden
-
 ---
 published: false
 title: "1"
