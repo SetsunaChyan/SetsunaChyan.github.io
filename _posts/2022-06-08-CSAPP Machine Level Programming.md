@@ -39,7 +39,7 @@ void swap(int *x,int *y) {
 
 这个函数经过 `gcc -Og -S` 得到的汇编是
 
-```assembly
+```nasm
 movl    (%rdi), %eax
 movl    (%rsi), %edx
 movl    %edx, (%rdi)
@@ -86,7 +86,7 @@ long m12(long x) {
 
 经过优化后可能是
 
-```assembly
+```nasm
 leaq (%rdi,%rdi,2), %rax  # %rax = %rdi + 2 * %rdi
 salq $2, %rax             # %rax <<= 2 
 ```
@@ -124,7 +124,7 @@ int gt(long x, long y) {
 }
 ```
 
-```assembly
+```nasm
 # %rdi = x, %rsi = y
 cmpq %rsi, %rdi
 setg %al
@@ -152,7 +152,7 @@ long absdiff(long x, long y) {
 }
 ```
 
-```assembly
+```nasm
 # -Og:
 # %rdi = x, %rsi = y
         movq    %rdi, %rax
@@ -255,7 +255,7 @@ long switch_eg(long x, long y, long z) {
 
 前半段会变成这样：
 
-```assembly
+```nasm
 .LFB0:
 	.cfi_startproc
 	endbr64
@@ -275,7 +275,7 @@ long switch_eg(long x, long y, long z) {
 
 减去 11 是为了把标号从 $[11,17]$ 映射到 $[0,6]$ 。后面的 `cmpq` 与 `ja` 是个很巧妙的点，因为 `ja` 是无符号的，也就是说如果 `%rdi-6` 是负的或者大于 6 的都会跳转至 `.L8` 这个 default 段里。如果未跳转则根据跳转表跳转到相应的分支。这样跳转是 $O(1)$ 的。
 
-```assembly
+```nasm
 .L4:  # Jump Table
 	.long	.L7-.L4
 	.long	.L8-.L4
@@ -293,7 +293,7 @@ long switch_eg(long x, long y, long z) {
 
 比如 `x=13` 的分支就没有（这里编译器选择将 `x=14` 的部分复制了一份塞进 `x=13` 的分支里），但 `x=17` 或 `x=14` 的分支有。
 
-```assembly
+```nasm
 .L6: # x = 13 
 	cqto
 	idivq	%rcx
